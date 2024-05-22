@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.link {
+  gap: 20px;
+  display: flex;
+  a {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: black;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem;
+
+    img {
+      width: 145px;
+    }
+  }
+}

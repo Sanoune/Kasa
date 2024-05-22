@@ -1,0 +1,57 @@
+$small-screen: 480px;
+
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+
+.hero {
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  border-radius: 25px;
+  max-width: 1240px;
+  width: 100%;
+  @include breakpoint($small-screen) {
+    max-width: none;
+  }
+}
+
+.colortext {
+  color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  @include breakpoint($small-screen) {
+    font-size: 24px;
+    justify-content: flex-start;
+  }
+}
+
+.filtre {
+  background-color: rgba($color: #000000, $alpha: 0.2);
+  padding: 1rem;
+  border-radius: 25px;
+  height: 150px;
+  align-content: center;
+  @include breakpoint($small-screen) {
+    text-align: left;
+    height: 111px;
+    padding: 1rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}
+
+.margin {
+  display: flex;
+  place-content: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem;
+  @include breakpoint($small-screen) {
+    padding: 1rem;
+    padding-bottom: 0;
+  }
+}

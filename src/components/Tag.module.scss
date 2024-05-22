@@ -1,0 +1,26 @@
+@import "../variables.scss";
+$small-screen: 480px;
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+.CadreTag {
+  background-color: $rouge-color;
+  border-radius: 10px;
+  padding: 5px;
+  width: 150px;
+  height: auto;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  p {
+    color: $blanc-color;
+    margin: 0px;
+
+    @include breakpoint($small-screen) {
+      font-size: 13px;
+    }
+  }
+}

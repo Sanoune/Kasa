@@ -1,0 +1,33 @@
+@import "../variables.scss";
+$small-screen: 480px;
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+.cadre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 100px;
+  padding: 30px;
+  h1 {
+    font-size: 288px;
+    font-weight: bold;
+    margin: 0px;
+    @include breakpoint($small-screen) {
+      font-size: 160px;
+    }
+  }
+  h3 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  color: $rouge-color;
+  a {
+    color: $noir-color;
+  }
+}

@@ -1,0 +1,20 @@
+$small-screen: 480px;
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+.link {
+  display: flex;
+  img {
+    @include breakpoint($small-screen) {
+      height: auto;
+    }
+    width: 340px;
+    height: 340px;
+    object-fit: cover;
+    display: flex;
+    flex: 1;
+    border-radius: 10px;
+  }
+}

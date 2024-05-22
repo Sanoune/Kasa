@@ -1,0 +1,15 @@
+$small-screen: 480px;
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+.star {
+  width: auto;
+  height: auto;
+  margin-right: 5px;
+  @include breakpoint($small-screen) {
+    width: 15px;
+    height: 15px;
+  }
+}

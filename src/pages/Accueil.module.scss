@@ -1,0 +1,36 @@
+$small-screen: 480px;
+
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+
+.cadreAccueil {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-top: 0px;
+
+  @include breakpoint($small-screen) {
+    padding: 1rem;
+    padding-top: 0px;
+  }
+}
+
+.cardFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(246, 246, 246, 1);
+  padding: 50px;
+  gap: 50px;
+  border-radius: 25px;
+  margin-top: 2rem;
+
+  @include breakpoint($small-screen) {
+    background-color: white;
+    padding: 0px;
+    gap: 30px;
+  }
+}

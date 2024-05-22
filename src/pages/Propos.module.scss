@@ -1,0 +1,13 @@
+.cadre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 30px;
+  max-width: 1000px;
+}
+
+.element {
+  flex: 1;
+}

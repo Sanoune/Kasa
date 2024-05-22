@@ -1,0 +1,142 @@
+@import "../variables.scss";
+$small-screen: 480px;
+@mixin breakpoint($point) {
+  @media (max-width: $point) {
+    @content;
+  }
+}
+.cadreCarouselInfos {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 2rem;
+  @include breakpoint($small-screen) {
+    padding: 1rem;
+  }
+
+  .carrousel {
+    display: flex;
+    position: relative;
+    button {
+      background-color: transparent;
+      top: 170px;
+      @include breakpoint($small-screen) {
+        top: 127.5px;
+      }
+      img {
+        @include breakpoint($small-screen) {
+          height: 20px;
+          width: 12px;
+        }
+      }
+    }
+
+    .buttonNext {
+      position: absolute;
+      right: 10px;
+    }
+    .buttonBack {
+      position: absolute;
+      left: 10px;
+    }
+    .imgCarousel {
+      width: 100%;
+      height: 415px;
+      object-fit: cover;
+      border-radius: 25px;
+      @include breakpoint($small-screen) {
+        height: 255px;
+      }
+    }
+  }
+  .cadreInfos {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 30px;
+
+    .cadreInfosUn {
+      h2 {
+        color: $rouge-color;
+        font-weight: normal;
+        margin: 0px;
+      }
+      p {
+        margin: 0px;
+      }
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .cadreTagStras {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @include breakpoint($small-screen) {
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+  }
+  .cadre {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    @include breakpoint($small-screen) {
+      flex-direction: column;
+    }
+  }
+}
+
+.cadreTag {
+  display: flex;
+  gap: 15px;
+}
+.cadreInfosDeux {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  h3 {
+    color: $rouge-color;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 0px;
+  }
+  .imgHost {
+    height: 64px;
+    width: auto;
+    border-radius: 100px;
+  }
+}
+.description {
+  flex: 1;
+}
+.equipements {
+  flex: 1;
+}
+
+.gap {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  @include breakpoint($small-screen) {
+    flex-direction: column;
+  }
+}
+
+.cadreStars {
+  display: flex;
+  align-items: end;
+  @include breakpoint($small-screen) {
+    width: 98px;
+    height: 18px;
+  }
+}
+.ul {
+  padding: 0px;
+  list-style: none;
+}
