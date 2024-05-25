@@ -1,86 +1,41 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import buttonBack from "../assets/arrow-back.png";
-import buttonNext from "../assets/arrow-next.png";
+
 import Description from "../components/Description";
-import Star from "../components/Star";
+import LogementRating from "../components/LogementRating";
+import Slideshow from "../components/Slideshow";
 import Tag from "../components/Tag";
+import { getData } from "../utils/api";
 import styles from "./Logement.module.scss";
 
 function Logement() {
+  //declaration de data et usEffect pour eviter de recharger les datas à chaque render de page
   const [data, setData] = useState(null);
-
   useEffect(() => {
-    fetch("/data/data.json")
-      .then((res) => res.json())
-      .then((jsonData) => {
-        setTimeout(() => setData(jsonData), 1500);
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      });
+    getData().then((newData) => setData(newData));
   }, []);
-
+  //  recupere id de l'url
   const { id } = useParams();
-  const currentData = data ? data.find((item) => item.id === id) : null;
-  const [indexCarousel, setIndexCarousel] = useState(0);
-  function handleClickNext() {
-    const newIndex = indexCarousel + 1;
-    setIndexCarousel(newIndex);
-    if (newIndex > currentData.pictures.length - 1) {
-      setIndexCarousel(0);
-    }
-  }
-
-  function handleClickPrev() {
-    const newIndex = indexCarousel - 1;
-    setIndexCarousel(newIndex);
-    if (newIndex < 0) {
-      setIndexCarousel(currentData.pictures.length - 1);
-    }
-  }
-
-  function renderStars(rating) {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(<Star key={i} filled={i <= rating} />);
-    }
-    return stars;
-  }
+  const logement = data ? data.find((item) => item.id === id) : null;
+  const [firstName, lastName] = logement?.host.name.split(" ") || [];
 
   return (
     <>
       <div className={styles.cadreCarouselInfos}>
-        <div>
-          <div className={styles.carrousel}>
-            <button onClick={handleClickPrev} className={styles.buttonBack}>
-              <img src={buttonBack} alt="button-back" />
-            </button>
-            {data && (
-              <img
-                className={styles.imgCarousel}
-                src={currentData.pictures[indexCarousel]}
-                alt="carousel-image"
-              />
-            )}
-            <button onClick={handleClickNext} className={styles.buttonNext}>
-              <img src={buttonNext} alt="button-next" />
-            </button>
-          </div>
-        </div>
+        <div>{logement && <Slideshow images={logement.pictures} />}</div>
         <div className={styles.gap}>
           <div className={styles.cadreInfos}>
             {data && (
               <>
                 <div className={styles.cadreInfosUn}>
-                  <h2>{currentData.title}</h2>
-                  <p>{currentData.location}</p>
+                  <h2>{logement.title}</h2>
+                  <p>{logement.location}</p>
                 </div>
               </>
             )}
             <div className={styles.cadreTag}>
               {data &&
-                currentData.tags.map((el, index) => (
+                logement.tags.map((el, index) => (
                   <Tag key={index} message={el} />
                 ))}
             </div>
@@ -88,25 +43,20 @@ function Logement() {
           <div className={styles.cadreTagStras}>
             <div className={styles.cadreInfosDeux}>
               <div>
-                {currentData && currentData.host && (
-                  <React.Fragment>
-                    <h3>{currentData.host.name.split(" ")[0]}</h3>
-                    <h3>{currentData.host.name.split(" ")[1]}</h3>
-                  </React.Fragment>
+                {logement && logement.host && (
+                  <>
+                    <h3>{firstName}</h3>
+                    <h3>{lastName}</h3>
+                  </>
                 )}
               </div>
-
               <img
                 className={styles.imgHost}
-                src={
-                  currentData && currentData.host && currentData.host.picture
-                }
+                src={logement && logement.host && logement.host.picture}
                 alt="host-picture"
               />
             </div>
-            <div className={styles.cadreStars}>
-              {data && renderStars(currentData.rating)}
-            </div>
+            {logement && <LogementRating rating={logement.rating} />}
           </div>
         </div>
         <div className={styles.cadre}>
@@ -115,14 +65,14 @@ function Logement() {
               <Description
                 className={styles.description}
                 title="Description"
-                textDescription={currentData.description}
+                textDescription={logement.description}
               />
               <Description
                 className={styles.equipements}
                 title="Equipement"
                 textDescription={
                   <ul className={styles.ul}>
-                    {currentData.equipments.map((el, index) => (
+                    {logement.equipments.map((el, index) => (
                       <li key={index}>{el}</li>
                     ))}
                   </ul>

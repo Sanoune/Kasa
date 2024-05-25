@@ -29,6 +29,7 @@ function Description({ textDescription, title, className }) {
 }
 
 Description.propTypes = {
+  //accepte un type: element ou string
   textDescription: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired,
   title: PropTypes.string.isRequired,

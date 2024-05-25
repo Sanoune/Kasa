@@ -8,18 +8,16 @@ import Propos from "./pages/Propos";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Accueil />} />
-            <Route path="/logement/:id" element={<Logement />} />
-            <Route path="/propos" element={<Propos />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Accueil />} />
+          <Route path="/logement/:id" element={<Logement />} />
+          <Route path="/propos" element={<Propos />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

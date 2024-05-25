@@ -1,9 +1,4 @@
-$small-screen: 480px;
-@mixin breakpoint($point) {
-  @media (max-width: $point) {
-    @content;
-  }
-}
+@import "../variables.scss";
 .star {
   width: auto;
   height: auto;

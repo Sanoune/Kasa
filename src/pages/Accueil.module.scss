@@ -1,10 +1,4 @@
-$small-screen: 480px;
-
-@mixin breakpoint($point) {
-  @media (max-width: $point) {
-    @content;
-  }
-}
+@import "../variables.scss";
 
 .cadreAccueil {
   max-width: 1240px;

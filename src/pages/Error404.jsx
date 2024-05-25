@@ -4,8 +4,8 @@ function Error() {
   return (
     <div className={styles.cadre}>
       <h1>404</h1>
-      <h3>Oups! La page que vous demandez n&apos;existe pas.</h3>
-      <Link to="/">Retourner sur la page d&apos;accueil</Link>
+      <h3>{"Oups! La page que vous demandez n'existe pas."}</h3>
+      <Link to="/">{"Retourner sur la page d'accueil"}</Link>
     </div>
   );
 }

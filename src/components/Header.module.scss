@@ -1,3 +1,5 @@
+@import "../variables.scss";
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -5,27 +7,26 @@
   max-width: 1240px;
   margin: 0 auto;
   padding: 2rem;
+
+  // Media query pour les petits écrans
+  @include breakpoint($small-screen) {
+    padding: 1rem;
+
+    img {
+      width: 145px;
+    }
+  }
 }
 
 .link {
   gap: 20px;
   display: flex;
   a {
-    color: black;
+    color: $noir-color;
     text-decoration: none;
     &:hover {
       text-decoration: underline;
-      color: black;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    padding: 1rem;
-
-    img {
-      width: 145px;
+      color: $noir-color;
     }
   }
 }

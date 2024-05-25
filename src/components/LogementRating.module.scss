@@ -1,0 +1,10 @@
+@import "../variables.scss";
+
+.cadreStars {
+  display: flex;
+  align-items: end;
+  @include breakpoint($small-screen) {
+    width: 98px;
+    height: 18px;
+  }
+}

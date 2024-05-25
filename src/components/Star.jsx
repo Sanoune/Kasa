@@ -6,6 +6,7 @@ import styles from "./Star.module.scss";
 function Star({ filled }) {
   return (
     <img
+      //modifie src selon filled true ou false
       src={filled ? starFull : starEmpty}
       alt={filled ? "Full Star" : "Empty Star"}
       className={styles.star}
